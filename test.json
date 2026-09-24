@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "attack shark keyboard",
+    "active": false
+  },
+  {
+    "id": 2,
+    "name": "rakk gaming table",
+    "active": true
+  },
+  {
+    "id": 3,
+    "name": "jabra elite wireless headset",
+    "active": true
+  },
+  {
+    "id": 4,
+    "name": "arzopa portable monitor",
+    "active": true
+  }
+]
