@@ -18,6 +18,8 @@ public class JsonProcessingResponse
     public string FileName { get; set; } = string.Empty;
     public int TotalRecords { get; set; }
     public int MatchingRecords { get; set; }
+    // TODO
+    // Add more properties for filename and processing time
     public IReadOnlyList<JsonElement> Records { get; set; } = [];
 }
 }

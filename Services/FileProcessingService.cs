@@ -12,6 +12,9 @@ public class FileProcessingService : IFileProcessingService
     {
         try
         {
+            // TODO
+            // Add logic to get the filename and processing time
+
             await using var stream = file.OpenReadStream();
             using var document = await JsonDocument.ParseAsync(
                 stream,
@@ -36,6 +39,8 @@ public class FileProcessingService : IFileProcessingService
                     TotalRecords = document.RootElement.GetArrayLength(),
                     MatchingRecords = activeRecords.Length,
                     Records = activeRecords
+                    // TODO
+                    // Shape this response to add the filename and processingtime
                 }
             };
         }
