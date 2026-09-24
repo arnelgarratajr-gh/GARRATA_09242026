@@ -29,6 +29,9 @@ public class FileProcessingService : IFileProcessingService
                 .Select(record => record.Clone())
                 .ToArray();
 
+            // TODO
+            // add logger logic to log if file upload and process are success
+
             return new JsonProcessingResult
             {
                 IsValid = true,
@@ -46,6 +49,8 @@ public class FileProcessingService : IFileProcessingService
         }
         catch (JsonException)
         {
+            // TODO
+            // add logger logic to log if error is encountered
              return Invalid("The uploaded file contains invalid JSON.");
         }
     }
