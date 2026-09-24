@@ -1,0 +1,6 @@
+@GARRATA_09242026_HostAddress = http://localhost:5019
+
+GET {{GARRATA_09242026_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
