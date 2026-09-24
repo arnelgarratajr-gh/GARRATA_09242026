@@ -4,10 +4,12 @@ Dotnet Core REST API project for securely processing uploaded JSON files using D
 ## Option 1: Run with Docker (Preferred)
 - Install Docker Desktop
 - Run and verify Docker Desktop is running
+- If there are errors in Docker Desktop, most likely WSL, Hyper V or Virtualization are not enabled / installed. Check docker website for guide depending on your operating system.
+- Clone the repo from github to your local machine
 - In VS Code, open the project and change directory to GARRATA_09242026
 - Build the image using this command: docker build -t garrata-api .
 - Run the container using this command: docker run --name garrata-api-container -p 8080:8080 -e ApiKey=dev-only-api-key garrata-api
-- In your browsr, open this URL: http://localhost:8080/swagger
+- In your browser, open this URL: http://localhost:8080/swagger
 
 ## Option 2: Run locally
 - You may use VS Code
