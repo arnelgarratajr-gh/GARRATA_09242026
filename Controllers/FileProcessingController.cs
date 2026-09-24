@@ -1,5 +1,4 @@
 using GARRATA_09242026.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GARRATA_09242026.Controllers
