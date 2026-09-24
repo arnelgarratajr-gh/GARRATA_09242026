@@ -5,8 +5,8 @@ Dotnet Core REST API project for securely processing uploaded JSON files using D
 - Install Docker Desktop
 - Run and verify Docker Desktop is running
 - In VS Code, open the project and change directory to GARRATA_09242026
-- Build the image using this command: docker build -t garrata api .
-- Run the container using this command: docker run --name garrata-api-container -p 8080:8080 garrata-api
+- Build the image using this command: docker build -t garrata-api .
+- Run the container using this command: docker run --name garrata-api-container -p 8080:8080 -e ApiKey=dev-only-api-key garrata-api
 - In your browsr, open this URL: http://localhost:8080/swagger
 
 ## Option 2: Run locally
@@ -19,6 +19,7 @@ Dotnet Core REST API project for securely processing uploaded JSON files using D
 
 ## API Testing
 - In Swagger UI, expand the api process endpoint then click the Try it out button
+- Click the **Authorize** button, enter the API key, and click **Authorize**
 - An option to upload a file will appear, click Choose File button
 - Browse the root folder of GARRATA_09242026 folder and select the file test.json
 - After file is uploaded click execute button then api will return a response
@@ -26,13 +27,23 @@ Dotnet Core REST API project for securely processing uploaded JSON files using D
 ## Run with Docker (if there are code changes)
 - docker build -t garrata-api .
 - docker rm -f garrata-api-container
-- docker run --name garrata-api-container -p 8080:8080 garrata-api
+- docker run --name garrata-api-container -p 8080:8080 -e ApiKey=dev-only-api-key garrata-api
 - In your browsr, open this URL: http://localhost:8080/swagger
 
 ## API endpoints
 ### Process a file
 ```http
 POST /api/FileProcessing/process
+```
+
+The endpoint requires the `X-API-Key` request header. The development key is
+`dev-only-api-key`. For Docker, override it with the `ApiKey` environment
+variable instead of using this example key.
+
+Example request header:
+
+```http
+X-API-Key: dev-only-api-key
 ```
 
 Example input:

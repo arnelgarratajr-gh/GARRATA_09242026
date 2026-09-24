@@ -1,4 +1,5 @@
 using GARRATA_09242026.Services;
+using GARRATA_09242026.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,21 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IFileProcessingService, FileProcessingService>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("ApiKey", new Microsoft.OpenApi.OpenApiSecurityScheme
+    {
+        Type = Microsoft.OpenApi.SecuritySchemeType.ApiKey,
+        Name = "X-API-Key",
+        In = Microsoft.OpenApi.ParameterLocation.Header,
+        Description = "Enter the API key used to access the file processing endpoint."
+    });
+
+    options.AddSecurityRequirement(document => new Microsoft.OpenApi.OpenApiSecurityRequirement
+    {
+        [new Microsoft.OpenApi.OpenApiSecuritySchemeReference("ApiKey", document)] = []
+    });
+});
 
 var app = builder.Build();
 
@@ -25,6 +40,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<ApiKeyMiddleware>();
 
 app.UseAuthorization();
 

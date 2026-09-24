@@ -1,6 +1,16 @@
 @GARRATA_09242026_HostAddress = http://localhost:5019
 
-GET {{GARRATA_09242026_HostAddress}}/weatherforecast/
-Accept: application/json
+### Process a JSON file
+POST {{GARRATA_09242026_HostAddress}}/api/FileProcessing/process
+X-API-Key: dev-only-api-key
+Content-Type: multipart/form-data; boundary=----JsonFileBoundary
 
-###
+------JsonFileBoundary
+Content-Disposition: form-data; name="file"; filename="test.json"
+Content-Type: application/json
+
+[
+  { "id": 1, "name": "Desk", "active": true },
+  { "id": 2, "name": "Office Chair", "active": false }
+]
+------JsonFileBoundary--
