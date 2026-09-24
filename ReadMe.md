@@ -17,8 +17,14 @@ Dotnet Core REST API project for securely processing uploaded JSON files using D
 - Run the container using this command: docker run --name garrata-api-container -p 8080:8080 garrata-api
 - In your browsr, open this URL: http://localhost:8080/swagger
 
-## Run with Docker (if code changes)
+## Run with Docker (if there are code changes)
 - docker build -t garrata-api .
 - docker rm -f garrata-api-container
 - docker run --name garrata-api-container -p 8080:8080 garrata-api
 - In your browsr, open this URL: http://localhost:8080/swagger
+
+## API Testing
+- In Swagger UI, expand the api process endpoint then click the Try it out button
+- An option to upload a file will appear, click Choose File button
+- Browse the root folder of GARRATA_09242026 folder and select the file test.json
+- After file is uploaded click execute button then api will return a response
